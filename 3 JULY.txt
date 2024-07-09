@@ -1,0 +1,62 @@
+show databases;
+use sakila;
+
+select database();
+
+show tables;
+/*  */
+
+select * from actor;
+select * FROM
+actor;
+
+describe actor;
+
+select actor_id,actor_id+1,first_name  from actor;
+
+select * from actor where Actor_id = 3;
+
+select * from actor where first_name='ED';
+
+select actor_id,first_name from actor where first_name='ED';
+
+----- where operator (between)
+select * from actor where actor_id between 3 and 5;
+
+select*from actor where actor_id in(3,5,7);
+
+select * from actor where actor_id not in (3,5,7);
+
+
+select*from actor where first_name in ("john");
+
+select * from actor where first_name in ("john","nik");
+
+--- like operator  (E% = % (zero or more character)
+
+select * from actor where first_name Like 'ED';
+
+select * from actor where first_name Like 'E%';
+
+--- G is first last character is A
+
+select * from actor where first_name Like 'G__A';
+
+select * from actor where first_name like 'S%';
+
+select * from actor where first_name = 'nick' and actor_id = 2;
+
+select * from actor where first_name in ('penelop[' , 'nick') and actor_id>2;
+
+----- assignment -----------
+
+select * from actor where first_name like 'S__%';
+
+select * from actor where first_name like 'S_H%__D_';
+
+select * from actor where first_name like '_C___%';
+
+select * from actor where actor_id lIKE '_I%m_';
+
+select * from actor where (first_name = 'penelop' or first_name = 'nik')and actor_id>3; 
+
