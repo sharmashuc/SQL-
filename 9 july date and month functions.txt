@@ -1,0 +1,71 @@
+show databases;
+use sakila;
+select 1+2 from dual;
+
+------- pseudo column 
+select curdate(), current_time(), current_timestamp()
+
+select now() from dual;
+
+select adddate( now(),3);
+
+select adddate( now(), interval 3 month );
+
+select date(now() );
+
+select now(), month(now() ),
+date_format( now() , '%y');
+
+select now(), month(now() ),
+date_format( now() , 'year is %y');
+
+select now(), month(now() ),
+date_format( now() , '%m');
+
+select curdate() from dual;
+
+select month('09-17-24');
+
+select str_to_date('09-17-24', '%m-%d-%y');
+
+select str_to_date('09-17/24', '%m/%d/%Y');
+
+-------- date diff
+
+select * from payment;
+
+select sum(amount) from payment;
+
+select max(amount), min(amount), avg(amount) from payment;
+
+select max(amount), max(staff_id),
+min(amount), avg(amount) from payment;
+
+select count(customer_id) from payment;
+
+select count(*) from payment;
+
+select customer_id from payment;
+select  distinct(customer_id) from payment;
+
+select count(distinct(customer_id)),  from payment;
+
+select * from payment;
+select count(*) from payment where customer_id=1;
+
+select customer_id, count(*) from payment group by customer_id;
+
+---- max amount,avg amount, minimum amount
+---- every month what is total payment as per payment date
+------ get the total amount only for those payments where payment id 3 to 3000 and make sure customer id for not included
+----------  from the address table i need to find out top three distinct by count 
+
+select max(amount), avg(amount), min(amount) from payment;
+
+
+
+select address , count(*) from payment group by address;
+
+select amount from payment where customer_id between 3 and 3000 and payment_id not in (4);
+
+
