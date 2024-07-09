@@ -1,0 +1,65 @@
+-- string funcitons
+-- string data ( varchar
+-- single row function
+use sakila;
+select * from actor;
+
+select  first_name, lower(first_name)
+from actor;
+
+-- dummy table ( dual table)
+select 1+2  from dual;
+
+select length('hey') from dual;
+   
+-- size in byte
+select length('漢漢') from dual;
+select char_length('漢') from dual;
+
+-- substring
+select  first_name, substr(first_name,2,3)  from actor;
+
+select  first_name, substr(first_name,-4,2)  from actor;
+-- instr  , locate
+select  first_name, instr(first_name,'e')  from actor;
+
+
+select first_name, last_name,
+ concat('MR',' ',first_name,' ', last_name)
+from actor;
+
+
+select first_name, last_name,
+ concat_ws('-','MR',first_name,last_name)
+from actor;
+
+-- ltrim, rtrim, trim
+select  trim('   hey    ') from dual;
+
+select  length(trim('   hey    ')) from dual;
+
+select  trim(leading ' ' from '   hey    ') from dual;
+select  trim(trailing ' ' from '   hey    ') from dual;
+
+
+select  trim(both 'h' from 'hhhhhe y  hhhhh ') from dual;
+
+--
+select  first_name,trim(both 'P' from first_name)
+ from actor;
+ 
+--  lpad  rpad
+select first_name, rpad(first_name,5,'#') from actor;
+
+select first_name, replace(first_name,'E','#') from actor;
+
+
+
+--  numeric  values
+select  round(12.586)  from dual;
+
+select  round(12.682, 2)  from dual;
+
+select  truncate(12.689, 2)  from dual;
+
+select  mod(12, 5)  from dual;
