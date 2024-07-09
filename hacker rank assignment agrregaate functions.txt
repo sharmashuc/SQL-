@@ -1,0 +1,20 @@
+1.  SELECT COUNT(*) AS NumberOfCities
+FROM CITY
+WHERE Population > 100000;
+
+
+2. SELECT AVG(Population) AS AveragePopulation
+FROM CITY
+WHERE District = 'California';
+
+
+3. SELECT FLOOR(AVG(Population)) AS AveragePopulation
+FROM CITY;
+
+4. SELECT SUM(Population) AS TotalPopulation
+FROM CITY
+WHERE COUNTRYCODE = 'JPN';
+
+5. SELECT MAX(Population) - MIN(Population) AS PopulationDifference
+FROM CITY;
+
