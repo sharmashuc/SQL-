@@ -1,0 +1,46 @@
+use sakila;
+ 
+select * from address;
+
+select district, count(*) from address group by district order by count(*) desc;
+
+select district , count(*) from address group by district having count(*) > 5;
+
+select district, count(*) from address where city_id>100 and district='alberta' group by district;
+
+select * from address;
+---------- multiple row sorting -----------------------------------------
+
+select count (address_id) from address;
+select count(address2) from address;
+
+select address_id , district ,address_id+10+20 as "n1" from address order by n1 desc;
+
+select * from address order by district desc, postal_code desc;
+select * from address order by district, city_id desc;
+select district as "new" , address * from  address order by new, city_id desc;                                                        
+
+
+
+## subquery
+# query within a query 
+
+select * from actor;
+
+select  first_name  from actor where actor_id =2;
+select  first_name  from actor where actor_id =3;
+
+
+select * from actor where first_name = 'nick'
+
+select * from actor where first_name = 
+(select  first_name  from actor where actor_id =3);
+
+------------------ Q1. amount information amount 3 k equal ho
+select * from payment where  amount = (select amount from payment where payment_id=3);
+
+----------------------- Q2.  the payment_id amount or p[ayment date jha month payment date month of payment id 5
+
+select month(payment_date) from payment where payment_id=5;
+
+select * from payment where month(payment_date)=(select month(payment_date) from payment where payment_id = 5);
