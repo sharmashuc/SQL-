@@ -1,0 +1,59 @@
+use sakila;
+
+select * from payment;
+
+##  ----------- = , >, < , <=,  yhh operator can't use 
+### multi row subquery ---------------- bitwise or in operator check for values 
+select amount from payment where payment_id = 2;
+
+select * from  payment where amount=(select amount from payment where payment_id=2);
+
+select * from payment where amount in (select amount from payment where payment_id=2 or payment_id=6);
+
+----------- all any 
+------------------- =any == >any means minimum value of subquery 
+---------------------- < any the maximum value of subquery 
+
+select * from payment where amount >any(select amount from payment where payment_id=2 or payment_id=6);
+
+select  *  from payment where amount <any (select amount from payment where payment_id=2 or payment_id=6);
+select * from payments;
+
+
+
+select * from payment;
+
+select staff_id , amount from payment where payment_id = 6;
+
+select * from payment
+where (staff_id,amount) in (select staff_id, amount from payment where payment_id=6);
+
+## table create 
+
+create database regex1234;
+use regex1234;
+
+create table student1(rollno int unsigned);
+insert into student values(322);
+insert into student values('a');
+select * from student1;
+
+create table student2(rollno int(5) zerofill);
+insert into student values(43679044);
+
+## unsigned m only positive values store hoti haiii
+------------ integar 4 byte  ka 1 bite m 8 
+--------------- 2**32 size 
+-------------- tiynyint  --------   -128 to 127 ==> 0 to 255 
+-------------- 2**8 ==> ( 0 to 255) 
+
+create table student4(id tinyint unsigned);
+insert into student4 values (210);
+select * from student4;
+
+-----  types of int ------------------1. mediumint:3 byte ,2. small:2 byte ,3. tiny:1byte , int: 4 byte , big int:8 byte  
+-------- char (character)  vs varchar (variable length )
+
+---------------- diffrence betwwen args kwargs --------------
+------------------ diffrence between and  having clause --------------  group by , subqueries , varcchar and char  
+----------------- dbms and databse ------------------------------------------- 
