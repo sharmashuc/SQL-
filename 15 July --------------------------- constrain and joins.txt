@@ -1,0 +1,73 @@
+ 15 July ----------------------------------------
+
+
+-----------------  constraint ---------- condition==> table ==> unwanted==> not null
+create database student;
+use student;
+create table student1 (sid int not null, email char(2));
+
+desc student1;
+
+insert into student1 values (4, "tushar");
+insert into student1 (sid, email) values (5, "null");
+
+select * from students;
+
+#  default ------------
+
+create table student5 (sid int , sname varchar(20) default "regex");
+
+insert into student5 values (10);
+---------------------- unique constrain --------------------------
+select * from student5;
+create table student6(sid int ,  sname varchar (20) unique);
+
+insert into student6(sud,sname)values(10,"aman1");
+
+select * from student6;
+
+--------------------------  primary key ------------------
+------- unique identifier ==> each record from a table 
+------------  query optimize -------------------------
+## unique and not null
+
+create table student7(sid int primary key , sname varchar(20));
+
+insert into student7(sid,sname)value (11,"aman");
+
+select * from student7;
+
+create table products(pid int, pname varchar(20));
+insert into products(pid, pname)
+values(10,"mobile"),(11,"apple"), (12, "TV");
+
+create table orders(oid int, city varchar(20), id int);
+insert into orders(oid, city, id)
+values(1009,"jaipur",11),(1010,"pune",12), (1011, "gujrat",13);
+select * from orders;
+select * from products;
+
+select oid, city, id,pname from orders
+join products
+where(orders.id=products.pid);
+
+-- cross ( every row matches with every row of second table)
+select oid, city, id,pid,pname from orders
+join products;
+
+
+
+select oid, city, id,pname from orders
+join products where(orders.id=products.pid);
+
+-- on clause
+select oid, city, id,pname from orders
+inner join products
+on (orders.id=products.pid);
+
+
+select oid, city, id,pname from orders left join products
+on (orders.id=products.pid);
+
+select oid, city, id,pname from products left join orders
+on (orders.id=products.pid);
