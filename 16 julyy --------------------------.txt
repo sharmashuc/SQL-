@@ -1,0 +1,33 @@
+ 16 julyy --------------------------------------
+
+---------- check constrain ===> condition according 
+
+use regex1234;
+create table yash(id int check (id>5));
+insert into yash value(11);
+select * from yash;
+
+create table yash2(name varchar(20) check(name=reverse(name)));
+insert into yash2 values("naman");
+select * from yash2;
+
+use sakila;
+select * from actor;
+select * from film_actor;
+desc actor;
+desc film_actor;
+select actor.actor_id , actor.first_name from actor;
+select actor.actor_id , actor.first_name  , film_actor.film_id from actor join film_actor where
+(actor.actor_id = film_actor.actor_id);
+
+ select * from film;
+ select film.title,film.film_id,film_actor.actor_id from film join film_actor where (film.film_id =film_actor.film_id); 
+ select f.film_id, fm.title from film_actor as f join film as fm where(f.film_id=fm.film_id);
+
+select * from actor;
+
+select * from film_actor;
+select * from film;
+select a.actor_id , fa.film_id from actor as a join film_actor as fa where (a.actor_id=fa.actor_id);
+select a.actor_id , fa.film_id, film.title
+ from actor as a join film_actor as fa join film where (a.actor_id=fa.actor_id) and (fa.film_id=film.film_id);
