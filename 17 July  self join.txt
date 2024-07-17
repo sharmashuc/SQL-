@@ -1,0 +1,36 @@
+17 July 
+
+self join------------------------------
+
+use sakila;
+ select * from actor ;
+ select * from film_actor;
+ select ac.actor_id , count(*)from actor as ac join film_actor as fa where(ac.actor_id = fa.actor_id) group by actor_id;
+
+------------ self join ---------------------------------
+
+create table regex_emp (id int , name varchar(20) , mid int);
+insert into regex_emp values (1,"tushar",null), (2,"abhishek",3), (3,"naina",1), (4,"shyam",2);
+
+select * from regex_emp;
+select emp.id , emp.name , emp.mid, manager.name from regex_emp as emp join regex_emp as manager where (emp.mid = manager.id);
+
+create table regex_emp2 (id int , name varchar(20) , mid int, salary);
+insert into regex_emp2 values (1,"tushar",null,1000), (2,"abhishek",3,5000), (3,"naina",1,4000), (4,"shyam",2,3000);
+select * from regex_emp2;
+
+---------------------- subquery m second highest salary -------------------------------------
+create table u1(salary int);
+insert into u1 values(10),(100),(200),(400),(9),(200),(400),(400);
+select * from u1 order by salary desc ;
+select max(salary) from u1 where salary < (select max(salary) from u1);
+SELECT *
+FROM u1
+WHERE Salary = (SELECT MIN(Salary) FROM u1);
+
+-----------------------  full join ==> left + right + inner (use union)
+--------------- basics 
+------------- functions
+---------------- subquery 
+------------------  aggregrate function , order by , alias , 
+
