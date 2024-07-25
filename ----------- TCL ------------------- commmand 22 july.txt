@@ -1,0 +1,63 @@
+----------- TCL ----------------------
+---------- transacton ==> logical unit of task ==> open , close 
+---- transaction end ==> ddl, dcl, commit,rollback
+set @@autocommit=0;
+create database yash;
+use yash;
+create table yash123(id int);
+insert into yash123 values(2001123);
+update yash123 set id=99;
+select * from yash123;
+commit;
+rollback;  --- dml task m transaction cancel hota haiii
+
+create table yash1234;  
+----- ddl transaction --------
+
+drop table yash123;
+create table yash13(id int);
+insert into yash13 values(19);
+insert into yash13 values(20);
+savepoint new_yash;
+insert into yash13 values(21);
+rollback to new_yash;
+select * from yash13;
+
+--- rollback or savepoint ek hi location se revert back krnaa-----------
+-------------- commit se permanantly save ho jate haiii --------
+
+--------------- dcl data control launguage ------------------------
+
+--------- authentication (making sure that a user can access the my sql server )
+------ autorization (making sure that a user can interact with objects in the database )
+------- object ownership ------- 
+
+--- user ==> username  (password)
+create user bob12 identified by 'bob' ;
+select current_user();
+select * from mysql.user;
+
+use sakila;
+show tables;
+
+grant all privileges on sakila.* to bob12;
+flush privileges;
+show grants for 'bob12';
+-----
+-------- permissions lene k liye --------
+revoke all privileges on sakila.* from bob12;
+show grants for 'bob';
+
+-------------- slected parts ki permission -------
+grant select(actor_id,first_name) on sakila.actor to bob12;
+show grants for bob12;
+
+----------- change password-------------
+alter user 'bob12' identified by 'regex';
+
+--------- locking user---
+alter user 'bob12' account lock;
+
+----- to unlock---- 
+alter user 'bob12' account unlock;
+
